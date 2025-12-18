@@ -1,2 +1,2 @@
 # Daily-pink-news
-hot news
+Hot News
