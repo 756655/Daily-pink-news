@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+</head>
+<body>
+  <h1>Welcome to Daily pink news</h1>
+                               <p>Hot News</p>
+</body>
+</html>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Daily Pink News</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #000;
+  --card: #111;
+  --pink: hotpink;
+  --text: #fff;
+}
+
+body.light {
+  --bg: #111;
+  --card: #fff;
+  --text: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 2px solid var(--pink);
+}
+
+nav h1 {
+  color: var(--pink);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li {
+  cursor: pointer;
+}
+
+.toggle {
+  background: var(--pink);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* VIDEO */
+.video-container {
+  height: 55vh;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NEWS */
+section {
+  padding: 30px;
+}
+
+section h2 {
+  text-align: center;
+  color: var(--pink);
+  margin-bottom: 20px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--pink);
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.news-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--pink);
+}
+
+.news-card h3 {
+  color: var(--pink);
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid var(--pink);
+  color: gray;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  nav ul {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h1>📰 Daily Pink News</h1>
+  <ul>
+    <li>Home</li>
+    <li>World</li>
+    <li>Tech</li>
+    <li>Sports</li>
+  </ul>
+  <button class="toggle" onclick="toggleTheme()">Theme</button>
+</nav>
+
+<!-- VIDEO BAR -->
+<div class="video-container">
+  <video autoplay muted loop>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+  </video>
+</div>
+
+<!-- NEWS -->
+<section>
+  <h2>Live News Updates</h2>
+
+  <div class="news-grid" id="news">
+    <!-- Auto news -->
+  </div>
+</section>
+
+<footer>
+  © 2025 Daily Pink News | Black & Pink Edition
+</footer>
+
+<script>
+/* THEME TOGGLE */
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+/* LIVE NEWS (AUTO UPDATE DEMO) */
+const newsData = [
+  "Breaking: Global markets show major movement today.",
+  "Technology: AI tools are changing the future.",
+  "Sports: Big match ends with shocking result.",
+  "Entertainment: New movie breaks records.",
+  "World: Leaders meet for emergency summit."
+];
+
+function loadNews() {
+  const container = document.getElementById("news");
+  container.innerHTML = "";
+  newsData.forEach(text => {
+    container.innerHTML += `
+      <div class="news-card">
+        <h3>Latest Update</h3>
+        <p>${text}</p>
+      </div>
+    `;
+  });
+}
+
+loadNews();
+setInterval(loadNews, 5000);
+</script>
+
+</body>
+</html>
+
